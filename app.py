@@ -5,6 +5,9 @@ def print_info(ticker):
     for key, value in ticker.info.items():
         print(f'{key}: {value}')
 
+def tick_round(x):
+    return round(x*4)/4
+
 def get_hist(ticker):
     # get all available data
     hist = ticker.history(period='max')
@@ -30,8 +33,10 @@ avg_up_move = data['Open to Hi'].mean()
 avg_dwn_move = data['Open to Lo'].mean()
 
 print()
-print(f'AVG Range: {round(avg_range, 2)}')
+# open is at midnight
+
+print(f'AVG Range: {tick_round(avg_range)}')
 print(f'AVG Volume: {round(avg_vol):,}')
-print(f'AVG Upper move: {round(avg_up_move, 2)}')
-print(f'AVG Lower move: {round(avg_dwn_move, 2)}')
+print(f'AVG Upper move from open: {tick_round(avg_up_move)}')
+print(f'AVG Lower move from open: {tick_round(avg_dwn_move)}')
 print()
