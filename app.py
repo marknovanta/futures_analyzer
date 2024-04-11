@@ -12,6 +12,8 @@ def get_hist(ticker):
     hist['Range'] = round(hist['High'] - hist['Low'], 2)
     hist['Low'] = round(hist['Low'], 2)
     hist['Close'] = round(hist['Close'], 2)
+    hist['Open to Hi'] = hist['High'] - hist['Open']
+    hist['Open to Lo'] = hist['Open'] - hist['Low']
     #hist['Volume'] = hist.apply(lambda x: '{:,}'.format(round(x['Volume'])), axis=1)
     return hist
 
@@ -24,8 +26,12 @@ print(data)
 
 avg_range = data['Range'].mean()
 avg_vol = data['Volume'].mean()
+avg_up_move = data['Open to Hi'].mean()
+avg_dwn_move = data['Open to Lo'].mean()
 
 print()
 print(f'AVG Range: {round(avg_range, 2)}')
 print(f'AVG Volume: {round(avg_vol):,}')
+print(f'AVG Upper move: {round(avg_up_move, 2)}')
+print(f'AVG Lower move: {round(avg_dwn_move, 2)}')
 print()
