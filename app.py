@@ -64,4 +64,23 @@ for v in data['Open to Lo']:
         count +=1
 print(f'{round((count/days)*100, 2)}%')
 
+
+print('\nHow many times Hi and Lo aound PA? (within 2pt sl)')
+hi_pa = 0
+lo_pa = 0
+for i in data['High']:
+    x = str(i/2.5)
+    y = x[-1]
+    if int(y) >= 0 and int(y) < 8:
+        hi_pa += 1
+
+for i in data['Low']:
+    x = str(i/2.5)
+    y = x[-1]
+    if int(y) >= 0 and int(y) < 8:
+        lo_pa += 1
+
+print(f'High on PA: {hi_pa} | {round((hi_pa/days)*100, 2)}%')
+print(f'Low on PA: {lo_pa} | {round((lo_pa/days)*100, 2)}%')
+
 print()

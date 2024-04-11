@@ -10,7 +10,7 @@ def print_info(ticker):
 
 def get_hist(ticker):
     # get all available data
-    hist = ticker.history(period='1mo')
+    hist = ticker.history(period='max')
     hist.drop(hist.columns[[-1,-2]], axis=1, inplace=True)
     hist['Range'] = round(hist['High'] - hist['Low'], 2)
     hist['Low'] = round(hist['Low'], 2)
