@@ -39,12 +39,12 @@ print(f'Max down move from open: {max_dwn}')
 print('\nMOVES FROM OPEN TO HIGH:')
 for key, value in ranges_up.items():
     # print label with value and visual
-    print(f'{key:<6}: {round((value/days)*100, 2):>6}%', ('#'*(int(round((value/days)*100)))))
+    print(f'{key:<6}: {value} | {round((value/days)*100, 2):>6}%', ('#'*(int(round((value/days)*100)))))
 
 print('\nMOVES FROM OPEN TO LOW:')
 for key, value in ranges_dwn.items():
     # print label with value and visual
-    print(f'{key:<6}: {round((value/days)*100, 2):>6}%', ('#'*(int(round((value/days)*100)))))
+    print(f'{key:<6}: {value} | {round((value/days)*100, 2):>6}%', ('#'*(int(round((value/days)*100)))))
 
 # How many days moved up within 30pt?
 print('\nHow many days moved up within 30pt?')
