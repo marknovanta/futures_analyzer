@@ -26,6 +26,7 @@ avg_range = data['Range'].mean()
 avg_vol = data['Volume'].mean()
 
 print()
+print('LAST MONTH')
 print(f'AVG Range: {round(avg_range, 2)}')
 print(f'AVG Volume: {round(avg_vol):,}')
 print()
