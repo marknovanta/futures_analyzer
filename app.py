@@ -27,6 +27,7 @@ ranges_dwn = calc_ranges(data, 'Lo')
 print()
 # open is at midnight
 
+# PRINT STATS
 print(f'AVG Range: {tick_round(avg_range)}')
 print(f'AVG Volume: {round(avg_vol):,}')
 print(f'AVG Upper move from open: {tick_round(avg_up_move)}')
@@ -44,5 +45,23 @@ print('\nMOVES FROM OPEN TO LOW:')
 for key, value in ranges_dwn.items():
     # print label with value and visual
     print(f'{key:<6}: {round((value/days)*100, 2):>6}%', ('#'*(int(round((value/days)*100)))))
+
+# How many days moved up within 30pt?
+print('\nHow many days moved up within 30pt?')
+count = 0
+for v in data['Open to Hi']:
+    # 2pt of stop loss
+    if v < 32:
+        count +=1
+print(f'{round((count/days)*100, 2)}%')
+
+# How many days moved down within 30pt?
+print('\nHow many days moved down within 30pt?')
+count = 0
+for v in data['Open to Lo']:
+    # 2pt of stop loss
+    if v < 32:
+        count +=1
+print(f'{round((count/days)*100, 2)}%')
 
 print()
